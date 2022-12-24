@@ -1,0 +1,20 @@
+--The following commands pertain to the dataset iowa_liquor_sales from the bigquery-public-data dataset.
+
+
+--Report containing address records of all liquor stores in Iowa by county.
+
+SELECT
+  store_number,
+  store_name,
+  address,
+  city,
+  zip_code,
+  store_location,
+  county
+FROM
+  `bigquery-public-data.iowa_liquor_sales.sales`
+ORDER BY
+  zip_code ASC
+  
+  
+  --Report
