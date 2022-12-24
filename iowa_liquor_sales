@@ -1,7 +1,7 @@
---The following commands pertain to the dataset iowa_liquor_sales from the bigquery-public-data dataset.
+--The following pertains to the dataset iowa_liquor_sales from the bigquery-public-data dataset.
 
 
---Report containing address records of all liquor stores in Iowa by county.
+--Report: address of all liquor stores in Iowa by zip code
 
 SELECT
   store_number,
@@ -17,4 +17,14 @@ ORDER BY
   zip_code ASC
   
   
-  --Report
+--Report: single store's sales in single year
+SELECT
+  store_number,
+  store_name,
+  SUM(sale_dollars)
+FROM
+  `bigquery-public-data.iowa_liquor_sales.sales`
+WHERE
+  store_number = '4509'
+  AND date <'2022-01-01' AND date >'2020-12-31'
+GROUP BY store_number, store_name
