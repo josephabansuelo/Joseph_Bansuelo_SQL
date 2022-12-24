@@ -18,6 +18,7 @@ ORDER BY
   
   
 --Report: single store's sales in single year
+
 SELECT
   store_number,
   store_name,
