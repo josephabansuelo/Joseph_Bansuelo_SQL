@@ -17,6 +17,20 @@ ORDER BY
   zip_code ASC
   
   
+  --Report: total year sales of all stores in 2021 starting from highest
+  
+  SELECT
+  store_number,
+  store_name,
+  SUM(sale_dollars) AS total_year_sales
+FROM
+  `bigquery-public-data.iowa_liquor_sales.sales`
+WHERE
+  date <'2022-01-01' AND date >'2020-12-31'
+GROUP BY store_number, store_name
+ORDER BY total_annual_sales DESC
+  
+  
 --Report: single store's sales in single year
 
 SELECT
