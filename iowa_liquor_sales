@@ -41,5 +41,5 @@ FROM
   `bigquery-public-data.iowa_liquor_sales.sales`
 WHERE
   store_number = '4509'
-  AND date <'2022-01-01' AND date >'2020-12-31'
+  AND date >'2020-12-31' AND date <'2022-01-01'
 GROUP BY store_number, store_name
