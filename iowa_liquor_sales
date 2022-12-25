@@ -31,7 +31,7 @@ GROUP BY store_number, store_name
 ORDER BY total_annual_sales DESC
   
   
---Report: single store's sales in single year
+--Report: single store's sales in a specified year
 
 SELECT
   store_number,
@@ -43,3 +43,18 @@ WHERE
   store_number = '4509'
   AND date >'2020-12-31' AND date <'2022-01-01'
 GROUP BY store_number, store_name
+
+
+--Report: single store's sales in a specified month
+
+SELECT
+  store_number,
+  SUM(sale_dollars) AS month_sales
+FROM
+  `bigquery-public-data.iowa_liquor_sales.sales`
+WHERE
+  store_number = '4509'
+  AND date >='2021-01-01' and date <'2021-02-01'
+GROUP BY
+  store_name,
+  store_number;
