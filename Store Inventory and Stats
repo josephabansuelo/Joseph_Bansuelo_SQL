@@ -1,3 +1,5 @@
+--Creating a store database
+
 CREATE TABLE Joeys_Tech_Store (int INTEGER PRIMARY KEY, item_id INTEGER, item_name TEXT, quantity INTEGER, price INTEGER);
 INSERT INTO Joeys_Tech_Store VALUES (1, 101, 'desktop', 500, 1200);
 INSERT INTO Joeys_Tech_Store VALUES (2, 102, 'laptop', 1000, 1100);
@@ -15,6 +17,9 @@ INSERT INTO Joeys_Tech_Store VALUES (13, 113, 'phone case', 300, 75);
 INSERT INTO Joeys_Tech_Store VALUES (14, 114, 'laptop carry bag', 50, 50);
 INSERT INTO Joeys_Tech_Store VALUES (15, 115, 'apl watch', 50, 1000);
 
+
+--Creating a customer database
+
 CREATE TABLE customers (int INTEGER PRIMARY KEY, cust_id INTEGER, cust_first_name TEXT, cust_last_name TEXT, cust_address TEXT, cust_city TEXT, cust_state TEXT, cust_zip INTEGER);
 INSERT INTO customers VALUES (1, 1001, 'Elon', 'Musk', '1000 Rich Texans Blvd.', 'Houston', 'TX', 77019);
 INSERT INTO customers VALUES (2, 1002, 'Alice', 'Walton', '1001 Rich Texans Blvd.', 'Houston', 'TX', 77019);
@@ -22,8 +27,14 @@ INSERT INTO customers VALUES (3, 1003, 'Michael', 'Dell', '1002 Rich Texans Blvd
 INSERT INTO customers VALUES (4, 1004, 'Jerry', 'Jones', '1003 Rich Texans Blvd.', 'Houston', 'TX', 77019);
 INSERT INTO customers VALUES (5, 1005, 'Stanley', 'Kroenke', '1004 Rich Texans Blvd.', 'Houston', 'TX', 77019);
 
+
+--Querying all items from the store database ordered by price high to low
+
 SELECT * FROM Joeys_Tech_Store
 ORDER BY price DESC;
+
+
+--Querying all customers from customer database ordered by customer id #
 
 SELECT * FROM customers
 ORDER BY cust_id;
