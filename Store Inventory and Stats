@@ -15,7 +15,7 @@ INSERT INTO Joeys_Tech_Store VALUES (13, 113, 'phone case', 300, 75);
 INSERT INTO Joeys_Tech_Store VALUES (14, 114, 'laptop carry bag', 50, 50);
 INSERT INTO Joeys_Tech_Store VALUES (15, 115, 'apl watch', 50, 1000);
 
-CREATE TABLE customers (int INTEGER PRIMARY KEY, customer_id INTEGER, cust_first_name TEXT, cust_last_name TEXT, cust_address TEXT, cust_city TEXT, cust_state TEXT, cust_zip INTEGER);
+CREATE TABLE customers (int INTEGER PRIMARY KEY, cust_id INTEGER, cust_first_name TEXT, cust_last_name TEXT, cust_address TEXT, cust_city TEXT, cust_state TEXT, cust_zip INTEGER);
 INSERT INTO customers VALUES (1, 1001, 'Elon', 'Musk', '1000 Rich Texans Blvd.', 'Houston', 'TX', 77019);
 INSERT INTO customers VALUES (2, 1002, 'Alice', 'Walton', '1001 Rich Texans Blvd.', 'Houston', 'TX', 77019);
 INSERT INTO customers VALUES (3, 1003, 'Michael', 'Dell', '1002 Rich Texans Blvd.', 'Houston', 'TX', 77019);
