@@ -34,6 +34,12 @@ SELECT * FROM Joeys_Tech_Store
 ORDER BY price DESC;
 
 
+--Querying low inventory from store database
+
+SELECT * FROM Joeys_Tech_Store
+WHERE quantity <= 100;
+
+
 --Querying all customers from customer database ordered by customer id #
 
 SELECT * FROM customers
