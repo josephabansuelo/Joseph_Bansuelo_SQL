@@ -166,7 +166,13 @@ WHERE account_created LIKE '%09%'
 ORDER BY account_created;
 
 
-/* More queries to query */
-/* Average sales by product */
-/* Max/Min sale by product */
-/* */
+/* Total sales by product */
+SELECT product, SUM(price)
+FROM sales
+GROUP BY product;
+
+
+/* View number of transactions involving various payment types */
+SELECT payment_type, COUNT(payment_type)
+FROM sales
+GROUP BY payment_type;
