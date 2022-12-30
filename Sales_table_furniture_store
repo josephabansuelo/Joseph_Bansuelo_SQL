@@ -2,6 +2,7 @@
 Sales from an online furniture store
 Collected by: https://www.khanacademy.org/profile/charlesb2000/
 */
+
 CREATE TABLE sales(
   ID INTEGER  NOT NULL PRIMARY KEY
 , transaction_date TEXT
@@ -134,23 +135,23 @@ GROUP BY city
 ORDER BY AVG(price) DESC;
 
 
-/* Cities with more than a certain number of sales */
+/* Cities where more than a certain number of sales were made */ 
 SELECT COUNT(city), city
 FROM sales
 GROUP BY city
 HAVING COUNT(city) > 1;
 
 
+/* Dates or time of year with most/least sales */
+SELECT transaction_date
+FROM sales
+WHERE transaction_date LIKE '1/1/09%';
+
+
 /* Sales from specific date */
 SELECT transaction_date
 FROM sales
-WHERE transaction_date LIKE '1/1/09%'; 
-
-
-/* See groupings of transaction dates to determine most profitable times */
-SELECT transaction_date
-FROM sales
-ORDER BY transaction_date ASC; 
+WHERE transaction_date LIKE '1/1/09%';
 
 
 /* Longest held account */
@@ -159,7 +160,7 @@ FROM sales
 ORDER BY account_created ASC;
 
 
-/* Customer accounts created in specific year */
+/* Customer accounts created in a specific year */
 SELECT name, account_created
 FROM sales
 WHERE account_created LIKE '%09%'
@@ -176,3 +177,19 @@ GROUP BY product;
 SELECT payment_type, COUNT(payment_type)
 FROM sales
 GROUP BY payment_type;
+
+
+/* Seeing records of a couple specified products */
+SELECT product, transaction_date
+FROM sales
+WHERE product = 'Chair' 
+OR product = 'Bed';
+
+
+/* See customers who have not logged in recently */
+SELECT last_login,
+CASE
+    WHEN last_login LIKE '1/2/09%' THEN "been awhile"
+    ELSE "recent login"
+    END AS "cust_last_login"
+    FROM sales;
