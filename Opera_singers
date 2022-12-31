@@ -1,0 +1,31 @@
+/* Small tables created to practice JOIN */
+
+CREATE TABLE opera_singers (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    fullname TEXT,
+    famous_roles TEXT,
+    spouse TEXT,
+    country TEXT,
+    birth_year INTEGER,
+    age_at_death INTEGER);
+    
+INSERT INTO opera_singers (fullname, famous_roles, spouse, country, birth_year, age_at_death) VALUES ("Luciano Pavarotti","Tonio, Rodolfo, Il Duca", "Adua Veroni, Nicoletta Mantovani", "Italy", "1935", "72");
+INSERT INTO opera_singers (fullname, famous_roles, spouse, country, birth_year, age_at_death) VALUES ("Leonard Warren","Rigoletto, Escamillo, Scarpia", "Agatha", "USA", "1911", "49");
+INSERT INTO opera_singers (fullname, famous_roles, spouse, country, birth_year, age_at_death) VALUES ("Franco Corelli","Faust, Turiddu, Cavaradossi", "Loretta Di Lelio", "Italy", "1921", "72");
+
+
+CREATE TABLE opera_debuts (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    role TEXT,
+    opera TEXT,
+    singer TEXT,
+    year INTEGER);
+
+INSERT INTO opera_debuts (role, opera, singer, year) VALUES ("Rodolfo","La Boheme", "Luciano Pavarotti", "1961");
+INSERT INTO opera_debuts (role, opera, singer, year) VALUES ("Paolo","Simon Boccanegra", "Leonard Warren", "1938");
+INSERT INTO opera_debuts (role, opera, singer, year) VALUES ("Don Jose","Carmen", "Franco Corelli", "1951");
+
+SELECT 
+FROM opera_singers
+JOIN opera_debuts
+ON opera_debuts.id = opera_singers.id;
