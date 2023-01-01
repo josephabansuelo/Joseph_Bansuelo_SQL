@@ -1,0 +1,38 @@
+-- Example query (PostgreSQL)
+
+/* JOIN tables on PRIMARY KEY */
+SELECT netpeople.show_id,
+netpeople.director,
+nettitles.title,
+nettitles.type
+FROM "CharlotteChaze/BreakIntoTech"."netflix_people" netpeople
+LEFT JOIN "CharlotteChaze/BreakIntoTech"."netflix_titles_info" nettitles
+ON netpeople."show_id" = nettitles."show_id";
+
+
+/* How many movie titles are there in the database? (movies only, not tv shows) */
+SELECT COUNT(type)
+FROM "CharlotteChaze/BreakIntoTech"."netflix_titles_info"
+WHERE type = 'Movie';
+
+/* When was the most recent batch of tv shows and/or movies added to the database? */
+SELECT MAX(date_added)
+FROM "CharlotteChaze/BreakIntoTech"."netflix_titles_info";
+
+/* List all the movies and tv shows in alphabetical order. */
+SELECT title
+FROM "CharlotteChaze/BreakIntoTech"."netflix_titles_info"
+ORDER BY title ASC;
+
+/* Who was the Director for the movie Bright Star? */
+SELECT nt.title, np.director
+FROM "CharlotteChaze/BreakIntoTech"."netflix_people" np
+JOIN "CharlotteChaze/BreakIntoTech"."netflix_titles_info" nt ON np.show_id = nt.show_id
+WHERE title LIKE 'Bright Star';
+
+/* What is the oldest movie in the database and what year was it made? */
+SELECT date_added, title
+FROM "CharlotteChaze/BreakIntoTech"."netflix_titles_info"
+ORDER BY date_added
+LIMIT 1;
+
