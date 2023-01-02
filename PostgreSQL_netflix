@@ -1,4 +1,5 @@
 -- Example query (PostgreSQL)
+-- Below are my queries from a database in the Break Into Tech certification course.
 
 /* JOIN tables on PRIMARY KEY */
 SELECT netpeople.show_id,
