@@ -1,0 +1,68 @@
+-- The following queries pertain to a dataset from the Break Into Tech Course.
+
+-- List all sales from January including orderID, account number, Product, Quanity, and orderdate
+SELECT orderID,
+     acctnum,
+     Product,
+     Quantity,
+     price
+     orderdate   
+FROM BIT_DB.JanSales js
+JOIN BIT_DB.customers c
+ON js.orderID = c.order_id;
+
+
+-- Find the quantity of a certain item (iPhone) sold in a certain month (January)
+SELECT Product,
+COUNT(PRODUCT)
+FROM BIT_DB.JanSales 
+WHERE orderId <> ''
+    AND orderID <> 'Order ID'
+    AND product = 'iPhone';
+
+
+--Find the products sold, quantity sold, and revenue earned from a specific customer address
+SELECT location,
+product, 
+sum(Quantity), 
+sum(quantity)*price as revenue
+FROM BIT_DB.FebSales 
+WHERE location = '548 Lincoln St, Seattle, WA 98101'
+GROUP BY product;
+
+
+-- List average spent per orderID
+SELECT f.orderID,
+    c.acctnum,
+    f.product,
+    f.Quantity,
+    f.price,
+    AVG(Quantity * price) AS average_spent
+FROM FebSales f
+JOIN BIT_DB.customers c
+ON f.orderID = c.order_id
+WHERE f.Quantity > '2'
+    AND f.orderID <> ''
+    AND f.orderID <> 'Order ID'
+GROUP BY c.acctnum
+ORDER BY f.orderID;
+
+
+-- List the lowest price items sold for in January
+SELECT distinct product, min(price)
+FROM BIT_DB.JanSales
+GROUP BY product;
+
+
+-- List products and revenue earned per product sold in a certain month (January)
+SELECT SUM(quantity)*price as Revenue
+,product
+FROM BIT_DB.JanSales
+GROUP BY product;
+
+
+-- List all products and quantity sold in a certain location (Los Angeles) in a certain month (February)
+SELECT Product, SUM(Quantity)
+FROM BIT_DB.FebSales
+WHERE location LIKE '%Los Angeles%'
+GROUP BY Product;
