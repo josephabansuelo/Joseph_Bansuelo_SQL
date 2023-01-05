@@ -55,14 +55,64 @@ GROUP BY product;
 
 
 -- List products and revenue earned per product sold in a certain month (January)
-SELECT SUM(quantity)*price as Revenue
-,product
+SELECT SUM(quantity)*price as Revenue,
+     product
 FROM BIT_DB.JanSales
 GROUP BY product;
 
 
 -- List all products and quantity sold in a certain location (Los Angeles) in a certain month (February)
-SELECT Product, SUM(Quantity)
+SELECT Product, 
+     SUM(Quantity)
 FROM BIT_DB.FebSales
 WHERE location LIKE '%Los Angeles%'
 GROUP BY Product;
+
+
+--Which locations in New York received at least 3 orders in January, and how many orders did they each receive?
+SELECT location, 
+    COUNT(orderID)
+FROM JanSales
+WHERE location LIKE '%NY%'
+GROUP BY location
+HAVING COUNT(orderID)>2;
+
+
+--How many of each type of headphone were sold in February?
+SELECT Product,
+    SUM(Quantity) AS Quantity
+FROM FebSales
+WHERE product LIKE '%headphone%'
+GROUP BY product;
+
+
+--Average amount spent per account in February
+SELECT c.acctnum,
+    AVG(f.Quantity*f.price) AS average_spent
+FROM FebSales f
+LEFT JOIN customers c
+    ON f.orderID = c.order_id
+GROUP BY acctnum;
+
+
+--Average quantity of products purchased per account in February
+SELECT c.acctnum,
+    AVG(f.quantity) AS avg_ordered
+FROM customers c
+JOIN FebSales f
+    ON f.orderID = c.order_id
+GROUP BY c.acctnum
+ORDER BY avg_ordered DESC;
+
+
+--Product that brought in the most revenue in January and how much revenue did it bring in total? (This query actually produces about the top 20 products because the dataset only contains about 20 products)
+SELECT Product,
+    price,
+    ROUND(SUM(quantity*price)) AS JanRevenue
+FROM JanSales
+WHERE Product <> 'Product' 
+    AND Product <> ''
+    AND price <> 'Price Each' 
+    AND price <> ''
+GROUP BY Product
+ORDER BY JanRevenue DESC;
