@@ -1,0 +1,32 @@
+--From a dataset titled Spotifydata from the Break Into Tech course
+
+--Average danceability rating
+SELECT artist_name,
+    AVG(danceability)
+FROM Spotifydata
+GROUP BY artist_name
+ORDER BY AVG(danceability) DESC;
+
+
+--Top 10 artists based on popularity
+SELECT popularity,
+    artist_name
+FROM Spotifydata
+ORDER BY popularity DESC;
+
+
+--What artist released the longest song? 
+SELECT artist_name,
+    duration_ms
+FROM Spotifydata
+ORDER BY duration_ms DESC;
+
+
+--What's the average danceability for the 10 most popular songs?
+SELECT popularity,
+    track_name,
+    AVG(danceability)
+FROM Spotifydata
+GROUP BY track_name
+ORDER BY popularity DESC
+LIMIT 10;
