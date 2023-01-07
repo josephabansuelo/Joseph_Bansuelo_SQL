@@ -74,6 +74,7 @@ INSERT INTO BIT_DB.CityBikeLanes values(60,2002, 2021,"Mouse",4.5,4.3,"no");
 SELECT *
 FROM CityBikeLanes;
 
+
 -- Create Temporary Table and see aggregate function from it
 WITH safety_average_cte AS (
 SELECT street, AVG(safetyrating) as 'rating'
@@ -85,6 +86,7 @@ SELECT street,
     'safe lane' as 'label'
 FROM safety_average_cte
 WHERE rating >=4
+
 
 -- List of all the bike lanes, both safety ratings for each lane, the average safety rating for each lane, and a label with the recommendation as "Remove", "Leave As-Is", or "Improvements Needed"
 SELECT street, safetyrating,
